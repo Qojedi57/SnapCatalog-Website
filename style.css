@@ -99,7 +99,7 @@ body{
         margin-top: 10px;
     }
     .cover-overlay {
-        background : rgba(0,0,0,0.6);
+        color: #fff;
         height: 100%;
         display: flex;
         align-items: center; 
