@@ -4,7 +4,7 @@
     --decent-color: #d6e8db;
     --accent-color: #fff;
     --secondary-color: rgb(9, 189, 9);
-    --font-family: 'Poppins', sans-serif;
+    --font-family: 'Poppins', sans-seri;
     --text-color: gray;
 }
 
@@ -109,4 +109,4 @@ body{
         border-radius: 10px;
     }
 
-    
+    /* menu list */
