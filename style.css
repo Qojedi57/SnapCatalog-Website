@@ -109,4 +109,30 @@ body{
         border-radius: 10px;
     }
 
+
+    /* section heading */
+    .section-heading {
+        font-size: 18px;
+        text-transform: uppercase;
+        margin: 1rem 0 10px 0;
+        color: var(--text-color);
+    }
     /* menu list */
+.menu--list {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.menu--item {
+    width: 114px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid var(--decent-color);
+    padding: 10px 13px;
+    border-radius: 10px;
+    color: var(--text-color);
+}
+.menu--item img {
+    width: 100%;
+}
