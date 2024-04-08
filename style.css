@@ -63,3 +63,29 @@ body{
     cursor: pointer;
     background: var(--decent-color );
 }
+
+.fa-cart-shopping {
+    background: transparent !important;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.cart-icon {
+    position: relative;
+    }
+    .cart-icon span {
+        background: var(--secondary-color);
+        color: var(--accent-color);
+        border-radius: 50%;
+        width: 15px;
+        height: 15px;
+        font-size: 9px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        position: absolute;
+        right: -5px;
+        top: -5px;
+    }
+    
