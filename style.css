@@ -88,4 +88,25 @@ body{
         right: -5px;
         top: -5px;
     }
+
+    /* cover section */
+    .cover {
+        background-image: url('./image/potatoballs.jpg');
+        background-size: cover;
+        height: 25vh;
+        background-position: center;
+        border-radius: 10px;
+        margin-top: 10px;
+    }
+    .cover-overlay {
+        background : rgba(0,0,0,0.6);
+        height: 100%;
+        color: var(--accent-color);
+        display: flex;
+        align-items: center; 
+        flex-direction: column;
+        justify-content: center;
+        border-radius: 10px;
+    }
+
     
