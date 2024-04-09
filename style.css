@@ -17,9 +17,9 @@
         box-sizing:border-box;
         font-family: var(--font-family);
     } 
-    body{
+    body {
     background: #fff;
-        padding: 0 2%;
+        padding: 0 9%;
     }
     .header {
         padding: 1rem 0;
