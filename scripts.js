@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span class="cart-item-price">$${(item.price * item.quantity).toFixed(
                     2,
                     )}
-                <button class="remove-btn" data-index="${index}"><i class="fa-solid .fa-times"</i></button>
+                <button class="remove-btn" data-index="${index}"><i class="fa-solid fa-times"</i></button>
                 </span>
                 `;
 
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
         function removeItemFromCart(index){
             const removeItem = cartItems.splice(index, 1)[0];
             totalAmount -= removeItem.price* removeItem.quantity;
-            updateCartUI;
+            updateCartUI();
         }
 
         function updateCartTotal(){
