@@ -215,7 +215,7 @@
             gap: 10px;
             margin-top: 1rem;
         }
-            .cart-items {
+            .individual-cart-items {
                 display: flex;
                 justify-content: space-between;
                 padding: 10px 5px;
