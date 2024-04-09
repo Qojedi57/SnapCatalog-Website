@@ -255,3 +255,11 @@
                 cursor: pointer;
                 padding: 10px;
             }
+            .remove-item {
+                background: var(--primary-color);
+                color: var(--accent-color);
+                border-radius: 5px;
+                padding: 2px 8px;
+                cursor: pointer;
+                margin-left: 5px;
+            }
