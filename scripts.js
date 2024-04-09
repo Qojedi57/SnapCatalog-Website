@@ -33,12 +33,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let cartItems = [];
     let totalAmount = 0;
 
+    if (addToCartButtons) {
     addToCartButtons.forEach((button, index)=>{
         button.addEventListener('click', ()=>{
             const item = {
                 name: document.querySelectorAll('.card .card-title')[index].textContent,
-                price: parseFloat(document.querySelectorAll('.price')[index].textContent.slice(1),
-                ),
+                price: parseFloat(document.querySelectorAll('.price')[index].textContent.slice(1)),
                 quantity: 1,
             };
 
@@ -111,5 +111,5 @@ document.addEventListener('DOMContentLoaded', () => {
             sidebar.classList.remove('open');
         });
     });
+    }
 });
-
