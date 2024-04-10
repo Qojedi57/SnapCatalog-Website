@@ -34,83 +34,86 @@ document.addEventListener('DOMContentLoaded', () => {
     let totalAmount = 0;
 
     if (addToCartButtons) {
-    addToCartButtons.forEach((button, index)=>{
-        button.addEventListener('click', ()=>{
-            const item = {
-                name: document.querySelectorAll('.card .card-title')[index].textContent,
-                price: parseFloat(document.querySelectorAll('.price')[index].textContent.slice(1)),
-                quantity: 1,
-            };
+        addToCartButtons.forEach((button, index) => {
+            button.addEventListener('click', () => {
+                const cardTitles = document.querySelectorAll('.menu--list .menu--item h5'); // Updated selector
+                const prices = document.querySelectorAll('.price');
 
-            const exisitingItem = cartItems.find(
-                (cartItem)=> cartItem.name === item.name,
-            );
-            if (exisitingItem){
-                exisitingItem.quantity++;
-            } else {
-                cartItems.push(item);
-            }
+                // Checking if index is valid for both card titles and prices
+                if (index < cardTitles.length && index < prices.length) {
+                    const item = {
+                        name: cardTitles[index].textContent.trim(),
+                        price: parseFloat(prices[index].textContent.trim().slice(1)),
+                        quantity: 1,
+                    };
 
-            totalAmount += item.price;
+                    const existingItemIndex = cartItems.findIndex(cartItem => cartItem.name === item.name);
+                    
+                    if (existingItemIndex !== -1) {
+                        cartItems[existingItemIndex].quantity++;
+                    } else {
+                        cartItems.push(item);
+                    }
 
-            updateCartUI();
-        });
+                    totalAmount += item.price;
 
-        function updateCartUI() {
-            updateCartItemCount(cartItems.length);
-            updateCartItemList();
-            updateCartTotal();
-        }
-
-        function updateCartItemCount(count){
-            cartItemCount.textContent = count;
-        }
-
-        function updateCartItemList(){
-            cartItemsList.innerHTML='';
-            cartItems.forEach((item, index)=>{
-                const cartItem = document.createElement('div');
-                cartItem.classList.add('cart-item', 'individual-cart-item');
-                cartItem.innerHTML = `
-                <span>(${item.quantity}x)${item.name}</span>
-                <span class="cart-item-price">$${(item.price * item.quantity).toFixed(
-                    2,
-                    )}
-                <button class="remove-btn" data-index="${index}"><i class="fa-solid fa-times"></i></
-                button>
-                </span>
-
-                `;
-            cartItemsList.appendChild(cartItem);
+                    updateCartUI();
+                } else {
+                    console.error('Card title or price not found for index:', index);
+                }
             });
-
-            const removeButtons = document.querySelectorAll('.remove-btn');
-            removeButtons.forEach((button)=>{
-                button.addEventListener('click', (event)=>{
-                    const index = event.target.dataset.index;
-                    removeItemFromCart(index);
-                });
-            });
-        }
-
-        function removeItemFromCart(index){
-            const removeItem = cartItems.splice(index, 1)[0];
-            totalAmount -= removeItem.price* removeItem.quantity;
-            updateCartUI();
-        }
-
-        function updateCartTotal(){
-            cartTotal.textContent = `$${totalAmount.toFixed(2)}`;
-        }
-
-        cartIcon.addEventListener('click', ()=>{
-            sidebar.classList.toggle('open');
         });
-
-        const closeButton = document.querySelector('.sidebar-close');
-        closeButton.addEventListener('click', ()=>{
-            sidebar.classList.remove('open');
-        });
-    });
     }
+
+    function updateCartUI() {
+        updateCartItemCount(cartItems.length);
+        updateCartItemList();
+        updateCartTotal();
+    }
+
+    function updateCartItemCount(count) {
+        cartItemCount.textContent = count;
+    }
+
+    function updateCartItemList() {
+        cartItemsList.innerHTML = '';
+        cartItems.forEach((item, index) => {
+            const cartItem = document.createElement('div');
+            cartItem.classList.add('cart-item', 'individual-cart-item');
+            cartItem.innerHTML = `
+                <span>(${item.quantity}x) ${item.name}</span>
+                <span class="cart-item-price">$${(item.price * item.quantity).toFixed(2)}</span>
+                <button class="remove-btn" data-index="${index}"><i class="fa-solid fa-times"></i></button>
+            `;
+            cartItemsList.appendChild(cartItem);
+        });
+
+        const removeButtons = document.querySelectorAll('.remove-btn');
+        removeButtons.forEach((button) => {
+            button.addEventListener('click', (event) => {
+                const index = event.target.dataset.index;
+                removeItemFromCart(index);
+            });
+        });
+    }
+
+    function removeItemFromCart(index) {
+        const removeItem = cartItems.splice(index, 1)[0];
+        totalAmount -= removeItem.price * removeItem.quantity;
+        updateCartUI();
+    }
+
+    function updateCartTotal() {
+        cartTotal.textContent = `$${totalAmount.toFixed(2)}`;
+    }
+
+    cartIcon.addEventListener('click', () => {
+        sidebar.classList.toggle('open');
+    });
+
+    const closeButton = document.querySelector('.sidebar-close');
+    closeButton.addEventListener('click', () => {
+        sidebar.classList.remove('open');
+    });
 });
+
